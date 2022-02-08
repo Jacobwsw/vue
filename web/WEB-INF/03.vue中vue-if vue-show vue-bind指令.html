@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+
+<!--
+v-show 用来控制页面中的便签元素是否展示 底层是控制元素的display属性来进行标签的显示和不显示
+v-if   用来控制页面中的便签元素是否展示 底层是通过对dom树节点进行添加和删除来控制展示和隐藏
+v-bind 用来给页面中的标签元素绑定响应属性
+
+-->
+    <span v-show="true">vue</span>
+    <span v-show="isShow">vue</span>
+    <input type="button" value="点我显示隐藏" @click="showHide">
+    <h1 v-if="false">兄弟们天下无敌</h1><br>
+    <img  width="300px" :title="title" v-bind:src="src" >
+    <input type="button" value="点我进行改变" @click="changeTitle('这是改变后的title')">
+    <input type="button" value="点我改变图片" @click="changeImage('https://img1.baidu.com/it/u=3302956452,2139828349&fm=253&fmt=auto&app=138&f=JPEG?w=473&h=500')">
+</div>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+
+            isShow:true,
+            title:"vue中定义的title",
+            src:"https://img2.baidu.com/it/u=3277870098,1272922089&fm=253&fmt=auto&app=138&f=PNG?w=400&h=400",
+
+        },
+        methods:{
+            showHide() {
+                this.isShow = !this.isShow;
+            },
+            changeTitle(value) {
+                this.title =value;
+            },
+            changeImage(src) {
+                this.src = src;
+            }
+
+        },
+    })
+</script>
+
+</body>
+
+</html>

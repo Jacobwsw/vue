@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue中事件修饰符</title>
+</head>
+<style>
+    .aa{
+        background:red;
+        width: 300px;
+        height: 300px;
+    }
+</style>
+<body>
+
+<div id="app">
+<div class="aa" @click.self="divClick">
+    <!--用来阻止事件冒泡-->
+    <input type="button" value="按钮" @click.stop="btnClick">
+    <input type="button" value="按钮1" @click="btnClick1">
+
+</div>
+    <!--用来阻止事件的默认行为-->
+    <a href="https://www.baidu.com/" @click.prevent.once="aClick">百度</a>
+</div>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {},
+        methods: {
+            btnClick() {
+                alert("按钮被点击了");
+            },
+
+        divClick() {
+            alert("div被点击了");
+        },
+            aClick() {
+                alert("a被点击了");
+            },
+            btnClick1() {
+                alert("btn1被点击了");
+            }
+
+
+
+
+    },
+
+    })
+</script>
+</body>
+</html>

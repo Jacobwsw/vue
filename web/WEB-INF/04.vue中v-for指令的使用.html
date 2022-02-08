@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>04.vue中v-for指令的使用</title>
+</head>
+<body>
+
+<div id="app">
+<span>{{user.name}}  {{user.age}}</span>
+    <br>
+    <!--
+    通过v-for 遍历-->
+    <span v-for="(value,key,index) in user">
+        {{key}} : {{value}} : {{index}}
+    </span><br>
+    <ul>
+        <!--:key 便于vue内部做重用和排序-->
+        <li v-for="a,index in arr" :key="user.id">
+           {{index}} {{ a }}
+        </li>
+    </ul>
+
+    <ul>
+        <li v-for="user,index in users">
+          {{index+1}}  ===  {{user.name}} === {{user.age}} ==== {{user.content}}
+        </li>
+    </ul>
+</div>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            user:{name:"jacob",age:23},
+            arr:["北京","张家港","常州"],
+            users:[{id:"1",name:"小王", age: 23,content:"我爱java"},{id:"2",name:"小孙", age: 22,content:"我爱c"}]
+        },
+        methods: {
+
+        },
+
+    })
+</script>
+</body>
+</html>

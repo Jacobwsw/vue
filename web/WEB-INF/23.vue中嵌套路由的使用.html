@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>23.vue中嵌套路由的使用</title>
+</head>
+<body>
+
+<div id="app">
+<router-link to="/product">商品管理</router-link>
+<router-view></router-view>
+
+</div>
+<template id="product">
+    <div>
+        <h1>商品管理</h1>
+        <router-link to="/product/add">商品添加</router-link>
+        <router-link to="/product/edit">商品修改</router-link>
+        <router-view></router-view>
+    </div>
+
+</template>
+
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="../js/vue.js"></script>
+<script src="../js/vue-router.js"></script>
+<script>
+    const product =  {
+        template:"#product"
+    }
+    const productAdd =  {
+        template:"<h4>商品添加</h4>"
+    }
+    const productUpdate =  {
+        template:"<h4>商品修改</h4>"
+    }
+    const router = new VueRouter({
+        routes:[
+            {path:"/product",component:product,children:[
+                    {path:"add",component:productAdd},
+                    {path:"edit",component:productUpdate}
+                ]
+            },
+
+        ]
+    })
+    const app = new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+        router,
+    })
+</script>
+</body>
+</html>

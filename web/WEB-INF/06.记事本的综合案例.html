@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06.记事本的综合案例</title>
+</head>
+<body>
+
+<div id="app">
+
+    <input type="text" v-model="msg">
+    <input type="button" value="添加到记事本"   @click="save">
+    <ul>
+        <li v-for="item,index in lists">
+           {{index+1}} {{item}}<a href="javascript:;" @click="delRow(index)" >删除</a></li>
+
+    </ul>
+    <br>
+    <span>总数量：{{lists.length}}条 </span><input type="button" v-show="lists.length != 0" value="删除所有" @click="deleteAll"  >
+</div>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            msg:"",
+            lists:["百知教育最近更新大量前言课程","hello,vue"],
+        },
+        methods: {
+            save() {//添加到记事本
+                this.lists.push(this.msg)
+                this.msg ="";
+            },
+            delRow(index) {
+                //根据下标来是删除数组中的某个元素
+                this.lists.splice(index,1);//参数1表示从哪个元素开始 参数2：删除哪几个元素
+            },
+            deleteAll() {
+                this.lists ="";
+            },
+        },
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>17.在组件中定义自己数据</title>
+</head>
+<body>
+
+<div id="app">
+    //组件的使用
+<login></login>
+</div>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    //组件的申明的配置对象
+    const login = {
+        template:"<div><h1>百知教育 {{msg}}<ul v-for='item,index in lists'><li> {{index}} {{item}} </li></ul></h1></div>",
+        data() {
+            return {
+                msg:"hello",
+                lists:["java","springboot","css"]
+            }
+        }
+    }
+    const app = new Vue({
+        el: "#app",
+        data: {},
+        methods: {},
+        components:{
+           login,
+        }
+    })
+</script>
+</body>
+</html>

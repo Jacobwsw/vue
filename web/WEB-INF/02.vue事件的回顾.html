@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+<input type="button" value="点我进行触发" @click="test('21',23,'xiaohei')">
+   <!-- //事件三要素   事件源
+    //事件 单机 双击 双击
+    //事件的处理程序 通常使用函数-->
+
+</div>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+
+        },
+        methods:{
+            test(id,age,name) {
+                alert("test function click");
+                console.log(name);
+                console.log(age);
+                console.log(id)
+            }
+
+        },
+    })
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>18.组件中事件的定义</title>
+</head>
+<body>
+
+<div id="app">
+<login></login>
+</div>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    const  login ={
+        template:"<div><input type='button' value='点我触发组件中的事件' @click='change'>",
+        data() {
+            return {
+                name:"jacob",
+            }
+        },
+        methods:{
+            change() {
+                alert(this.name);
+            }
+        }
+    }
+    const app = new Vue({
+        el: "#app",
+        data: {},
+        methods: {
+
+        },
+        components:{
+            login,
+        }
+    })
+</script>
+</body>
+</html>

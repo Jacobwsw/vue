@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>16.在局部组件中使用prop接受动态数据</title>
+</head>
+<body>
+
+<div id="app">
+<login v-bind:name="username" ></login>
+</div>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script>
+    const login={
+        template:"<div><h2>欢迎:{{name}}</h2></div>",
+        props:["name"],
+    }
+    const app = new Vue({
+        el: "#app",
+        data: {
+            username:"王邵文",
+        },
+        methods: {},
+        components:{
+            login
+        },
+
+    })
+</script>
+</body>
+</html>
